@@ -1,2 +1,0 @@
-/home/vali/vertigo_git/vertigo/build/src/g2o/CMakeFiles/vertigo-g2o.dir
-/home/vali/vertigo_git/vertigo/build/src/gtsam2/CMakeFiles/vertigo-gtsam.dir
