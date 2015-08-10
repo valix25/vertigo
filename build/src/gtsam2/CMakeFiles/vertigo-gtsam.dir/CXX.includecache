@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/gtsam2/../../include/timer.h
+sys/time.h
+../src/gtsam2/../../include/sys/time.h
+map
+-
+string
+-
+
+/home/vali/vertigo_git/vertigo/src/gtsam2/betweenFactorSwitchable.cpp
+
+/home/vali/vertigo_git/vertigo/src/timer.cpp
+timer.h
+/home/vali/vertigo_git/vertigo/src/timer.h
+iostream
+-
+

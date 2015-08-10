@@ -15,10 +15,13 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "")
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
+add_definitions(" -std=c++11 ")
+
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -mfpmath=sse -msse3 -fPIC -O3 -DNDEBUG")
 set(CMAKE_LD_FLAGS_RELEASE "${CMAKE_LD_FLAGS_RELEASE} -O3")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fPIC -ggdb")
 
 
 add_subdirectory(src)
-add_subdirectory(examples)
+# example commented out because of obsolete header used in gtsam
+# add_subdirectory(examples)
