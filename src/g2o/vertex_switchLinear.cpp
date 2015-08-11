@@ -13,7 +13,7 @@
 
 using namespace std;
 
-    bool VertexSwitchLinear:: read(std::istream& is)
+    bool VertexSwitchLinear::read(std::istream& is)
     {
       is >> _x;
       _estimate=_x;
@@ -45,8 +45,8 @@ using namespace std;
     {
       _x += update[0];
 
-      if (_x<0) _x=0;
-      if (_x>1) _x=1;
+      if (_x<-1.0) _x=-1.0;
+      if (_x>1.0) _x=1.0;
 
       _estimate=_x;
     }

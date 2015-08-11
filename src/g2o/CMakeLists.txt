@@ -44,4 +44,7 @@ install (TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
 set(HEADERS_PATH_VERTIGO_G2O ${PROJECT_SOURCE_DIR}/../../include/g2o)
 file(GLOB vertigo_g2o_core_headers "${HEADERS_PATH_VERTIGO_G2O}/*.h")
 install(FILES ${vertigo_g2o_core_headers} DESTINATION include/vertigo/g2o)
+set(SOURCES_PATH_VERTIGO_G2O ${PROJECT_SOURCE_DIR})
+file(GLOB vertigo_g2o_core_src "${SOURCES_PATH_VERTIGO_G2O}/*.cpp")
+install(FILES ${vertigo_g2o_core_src} DESTINATION include/vertigo/g2o)
 
