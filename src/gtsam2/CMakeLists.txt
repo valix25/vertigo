@@ -28,3 +28,8 @@ target_link_libraries(${PROJECT_NAME} ${LINKLIBRARIES})
 
 
 install (TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
+
+# Common headers
+set(HEADERS_PATH_VERTIGO_GTSAM ${PROJECT_SOURCE_DIR}/../../include/gtsam2)
+file(GLOB vertigo_gtsam_core_headers "${HEADERS_PATH_VERTIGO_GTSAM}/*.h")
+install(FILES ${vertigo_gtsam_core_headers} DESTINATION include/vertigo/gtsam)

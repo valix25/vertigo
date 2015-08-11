@@ -8,13 +8,9 @@
 #ifndef BETWEENFACTORSWITCHABLE_H_
 #define BETWEENFACTORSWITCHABLE_H_
 
-#include <gtsam/slam/planarSLAM.h>
-#include <gtsam/nonlinear/NonlinearFactor.h>
+#include "gtsam/slam/BetweenFactor.h"
+#include "gtsam/nonlinear/NonlinearFactor.h"
 #include "gtsam/base/LieScalar.h"
-
-#include <iostream>
-using std::cout;
-using std::endl;
 
 #include "switchVariableLinear.h"
 #include "switchVariableSigmoid.h"

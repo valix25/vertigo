@@ -38,3 +38,10 @@ set (LINKLIBRARIES ${G2O_LIBRARIES} ${EIGEN3_LIBRARIES} ${OpenGL_LIBRARIES} ${GL
 
 target_link_libraries(${PROJECT_NAME} ${LINKLIBRARIES}) 
 
+install (TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
+
+# Common headers
+set(HEADERS_PATH_VERTIGO_G2O ${PROJECT_SOURCE_DIR}/../../include/g2o)
+file(GLOB vertigo_g2o_core_headers "${HEADERS_PATH_VERTIGO_G2O}/*.h")
+install(FILES ${vertigo_g2o_core_headers} DESTINATION include/vertigo/g2o)
+
