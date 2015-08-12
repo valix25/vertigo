@@ -32,6 +32,9 @@ class EdgeSE3Switchable : public g2o::BaseMultiEdge<6, Eigen::Isometry3d>
 
   protected:
     Eigen::Isometry3d _inverseMeasurement;
+
+  private:
+    double sigmoid(double x) const;
 };
 
 

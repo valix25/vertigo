@@ -18,6 +18,9 @@
 using namespace std;
 using namespace Eigen;
 
+double EdgeSE3Switchable::sigmoid(double x) const {
+  return 1.0/(1.0+exp(-x));
+}
 
 // ================================================
 EdgeSE3Switchable::EdgeSE3Switchable() : g2o::BaseMultiEdge<6, Eigen::Isometry3d>()
@@ -72,12 +75,15 @@ void EdgeSE3Switchable::linearizeOplus()
     const Eigen::Isometry3d& Z=_measurement;
     g2o::internal::computeEdgeSE3Gradient(E, _jacobianOplus[0], _jacobianOplus[1], Z, Xi, Xj);
 
-    _jacobianOplus[0]*=vSwitch->estimate();
-    _jacobianOplus[1]*=vSwitch->estimate();
+    double w = sigmoid(vSwitch->estimate());
+
+    _jacobianOplus[0] *= w;
+    _jacobianOplus[1] *= w;
 
     // derivative w.r.t switch vertex
     _jacobianOplus[2].setZero();
-    _jacobianOplus[2] = g2o::internal::toVectorMQT(E) * vSwitch->gradient();
+    //_jacobianOplus[2] = g2o::internal::toVectorMQT(E) * vSwitch->gradient();
+    _jacobianOplus[2] = g2o::internal::toVectorMQT(E) * (w*(1.0-w));
 }
 
 
@@ -89,7 +95,7 @@ void EdgeSE3Switchable::computeError()
     const VertexSwitchLinear* v3 = static_cast<const VertexSwitchLinear*>(_vertices[2]);
 
     Eigen::Isometry3d delta = _inverseMeasurement * (v1->estimate().inverse()*v2->estimate());
-    _error = g2o::internal::toVectorMQT(delta) * v3->estimate();
+    _error = g2o::internal::toVectorMQT(delta) * sigmoid(v3->estimate());
 }
 
 
