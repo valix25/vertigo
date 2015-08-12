@@ -21,6 +21,12 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -mfpmath=sse -msse3 -fPI
 set(CMAKE_LD_FLAGS_RELEASE "${CMAKE_LD_FLAGS_RELEASE} -O3")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fPIC -ggdb")
 
+set(PKG_CONFIG_EXPORT_LIBS "-lvertigo-g2o -lvertigo-gtsam")
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/vertigo.pc.in
+		${CMAKE_CURRENT_BINARY_DIR}/vertigo.pc @ONLY)
+
+install(FILES ${CMAKE_BINARY_DIR}/vertigo.pc DESTINATION lib/pkgconfig)
 
 add_subdirectory(src)
 # example commented out because of obsolete header used in gtsam
